@@ -5,8 +5,6 @@ class Weapons:
         self.cost=cost
         self.name=name
 
-asd = None
-
 class Swords(Weapons):
     def __init__ (self,damage,cooldown,cost,name):
         super().__init__(damage,cooldown,cost,name)
