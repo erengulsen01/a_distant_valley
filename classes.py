@@ -19,25 +19,29 @@ class Wands(Weapons):
     def info(self):
         print(self.name,":\nThis wand has {} damage, {} cooldown. Cost is {}.".format(self.damage,self.cooldown,self.cost))
 
-class Enemys:
-    def __init__ (self, health,damage,cooldown):
-        self.damage=damage
-        self.health=health
-        self.cooldown=cooldown
-
 class Hero:
-    def __init__ (self,hero_health=100, hero_money=20, item=None):
+    def __init__ (self,hero_health=100, hero_money=20, item=None , item2=None):
         self.max_health = hero_health
         self.hero_health=hero_health
         self.hero_money=hero_money
         self.weapon = item
+        self.armor = item2
+        self.key = True
 
         if item:
             self.hero_damage = item.damage
             self.hero_cooldown = item.cooldown
         else:
             self.hero_damage = 0
-            self.hero_cooldown = 0
+            self.hero_cooldown = 5
+
+        if item2:
+            self.max_health += item2.health
+            self.hero_health = self.max_health
+        else:
+            pass
+
+
 
     
 
@@ -47,6 +51,17 @@ class Hero:
 
     def changeMoney(self, new_money):
         self.hero_money=new_money
+    
+    def changeArmor(self, new_armor):
+        if self.armor:
+            self.max_health -= self.armor.armor_health
+            self.max_health += new_armor.armor_health
+            self.hero_health = self.max_health
+            self.armor = new_armor
+        else:
+            self.max_health += new_armor.armor_health
+            self.hero_health = self.max_health
+            self.armor = new_armor
     
 
     def weaponInfo(self):
@@ -62,8 +77,17 @@ class Hero:
 
 
 class mobs:
-    def __init__(self,mob_name,mob_health,mob_damage,mob_cooldown):
+    def __init__(self,mob_name,mob_health,mob_damage,mob_cooldown,mob_money):
         self.mob_health=mob_health
         self.mob_damage=mob_damage
         self.mob_cooldown=mob_cooldown
         self.mob_name=mob_name
+        self.mob_money=mob_money
+
+class Armors:
+    def __init__(self,armor_name,armor_health,armor_cost):
+        self.armor_name=armor_name
+        self.armor_health=armor_health
+        self.armor_cost=armor_cost
+    def info(self):
+        print(self.armor_name,":\nThis armor increases your max health by {}, Cost is {}.".format(self.armor_health,self.armor_cost))
