@@ -2,6 +2,8 @@ from classes import Swords, Wands, Weapons, Hero , mobs
 import os , time
 import random
 
+print("A distant valley game")
+
 Wooden_sword = Swords(damage="5-10",cooldown=5,cost=20,name="Wooden sword")
 
 Silver_sword = Swords(damage="10-20",cooldown=4,cost=50,name="Silver_sword")
