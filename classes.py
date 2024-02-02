@@ -39,6 +39,8 @@ class Hero:
             self.hero_damage = 0
             self.hero_cooldown = 0
 
+    
+
     def changeWeapon(self, new_weapon):
         self.weapon = new_weapon
         self.hero_damage = new_weapon.damage
